@@ -1,4 +1,101 @@
-.container {
+*{
+    margin: 0;
+    padding: 0;
+    font-family:sans-serif;
+}
+body {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     border: 2px solid;
+/* 
+    background-color: rgba(9, 9, 9, 0.872);
+    color: rgba(233, 230, 230, 0.892); */
+
+    color: rgba(43, 42, 42, 0.951);
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* width: 100%; */
+    padding: 10px 30px;
+    border: 2px solid;
+
+    margin: 10px 30px;
+}
+
+.header .center ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+.header .center ul li a{
+    margin: 0 30px;
+    color: wheat;
+    font-size: 20px;
+}
+
+.header .right {
+    width: fit-content;
+    display: flex;
+    
+}
+
+.header .right button {
+    margin-left: 20px;
+    font-size: 20px;
+    height: 40px;
+    padding: 5px 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+}
+
+.heroSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border: 2px solid;
+    margin: 30px 40px;
+    padding: 30px 40px;
+    width: 900px;
+
+    border: 2px solid;
+    /* min-height: 60vh; */
+
+    background-color: rgb(225, 246, 240);
+}
+
+.heroSection h1 {
+    font-size: 80px;
+    /* border: 2px solid; */
+    text-align: center;
+    margin: 10px 30px;
+}
+
+.heroSection h2 {
+    font-size: 25px;
+    text-align: center;
+    border: 2px solid;
+    text-align: center;
+    margin: 10px 50px;
+}
+
+.heroSection button {
+    width: 180px;
+    margin: 0 30px;
+    font-size: 20px;
+    height: 40px;
+    padding: 5px 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
 }
