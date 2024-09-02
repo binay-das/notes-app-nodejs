@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Notes</title>
-    <link rel="stylesheet" href="/allNotes.css">
+    <link rel="stylesheet" href="/notes.css">
 </head>
 <body>
+    <div class="add">
+        <a href="http://localhost:8080/notes/add">Add a new note</a>
+    </div>
     <div class="container">
-        <% for (note of allNotes) { %>
-            <h3 class="note">
+        <% for (note of notes) { %>
+            <div class="note">
                 <%= note.content %>
-            </h3>
+            </div>
         <% } %>
     </div>
 </body>

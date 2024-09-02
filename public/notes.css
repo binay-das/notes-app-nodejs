@@ -1,0 +1,17 @@
+.container {
+    border: 2px solid;
+    min-height: 100vh;
+    display: grid;
+    padding: 30px;
+
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.note {
+    display: flex;
+    border: 2px solid blue;
+    width: 40%;
+    font-size: 20px;
+    height: fit-content;
+}
