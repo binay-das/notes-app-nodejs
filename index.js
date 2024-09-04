@@ -32,6 +32,10 @@ app.post("/notes", (req, res) => {
     res.redirect("/notes");
 })
 
+app.get("/about",(req,res)=>{
+    res.render("about");
+})
+
 const port = 8080;
 app.listen(port, () => {
     console.log(`Listening to port ${port}...`)
