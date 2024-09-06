@@ -9,10 +9,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 
 let notes = [
-    {
-        title: "Sample title",
-        content: "Hello guys",
-    },
+    
 ];
 app.get("/", (req, res) => {
     res.render("home");
@@ -27,10 +24,12 @@ app.get("/notes/add", (req, res) => {
     res.render("add");
 })
 
+
+
 app.post("/notes", (req, res) => {
-    let { content } = req.body;
+    let { title, content } = req.body;
     console.log(req.body);
-    notes.push({ content });
+    notes.push({ title, content });
     res.redirect("/notes");
 })
 
