@@ -23,13 +23,13 @@ Follow these steps to get the project up and running on your local machine:
 ### Clone the repository
 
 
-- git clone https://github.com/your-username/notes-app.git
+- git clone https://github.com/binay-das/notes-app-nodejs.git
 - cd notes-app
 
 ### Install dependencies
 Run the following command to install all necessary packages:
 
-npm install
+- npm install
 
 ### Set up MongoDB
 
