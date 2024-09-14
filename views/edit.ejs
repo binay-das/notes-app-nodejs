@@ -8,11 +8,10 @@
 <body>
     <form action="/notes/edit/<%=note.id%>?_method=PUT" method="post">
         <div class="note">
-            <h3><%= note.title %> </h3>
-            <textarea><%= note.content %> </textarea>
+            <input type="text" name="title" value="<%= note.title %>">
+            <textarea name="content"><%= note.content %></textarea>
             
-            
-            <button>Save</button>
+            <button>Update Note</button>
         </div>
     </form>
 </body>

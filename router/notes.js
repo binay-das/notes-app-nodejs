@@ -6,10 +6,11 @@ router.get("/all-notes", async (req, res) => {
     try {
         const notes = await Note.find({});
         res.render("notes", { notes });
+        
     } catch (err) {
         res.status(500).send("Error fetching notes");
     }
-    
+
 })
 
 router.get("/add", (req, res) => {
@@ -18,11 +19,22 @@ router.get("/add", (req, res) => {
 
 
 router.get('/:id', async (req, res) => {
-    const id = req.params.id;
-    
+    try {
+        const id = req.params.id;
+        const note = await Note.findById(id);
+        res.render("", {
+
+            note: note
+
+        })
+
+    } catch (err) {
+        res.status(500).send("Error fetching the note");
+    }
+
 })
 
-router.post("/", async (req, res, next) => {
+router.post("/", async (req, res) => {
     try {
         const newNote = new Note({
             title: req.body.title,
@@ -33,50 +45,51 @@ router.post("/", async (req, res, next) => {
         res.redirect('/notes/all-notes');
 
     } catch (err) {
-        res.status(500).send("Error saving teh note");
+        res.status(500).send("Error saving the note");
     }
 });
 
 
 
 router.delete('/:id', async (req, res) => {
-    const id = rq.params.id;
-    await Note.findByIdAndDelete(id);
-    res.redirect('/notes/all-notes');
+    try {
+        const id = req.params.id;
+        await Note.findByIdAndDelete(id);
+        res.redirect('/notes/all-notes');
+
+    } catch (err) {
+        res.status(500).send("Error deleting the note");
+    }
 })
 
 router.get('/edit/:id', async (req, res) => {
-    const id = req.params.id;
-    const note = await Note.findById(id);
 
-    res.render('edit', {
-        note: note
-    })
+    try {
+        const id = req.params.id;
+        const note = await Note.findById(id);
+
+        res.render('edit', {
+            note: note
+        })
+
+    } catch (err) {
+        res.status(500).send("Error fetching the note for edit");
+    }
 })
 
 router.put('/edit/:id', async (req, res, next) => {
     const id = req.params.id;
     const note = await Note.findById(id);
 
-    next();
-}, saveNoteAndRedirect);
-
-function saveNoteAndRedirect() {
-    return async (req, res) => {
-        let note = req.Note;
-
-        note.title = req.body.title;
-        note.content = req.body.content;
-
-        try {
-            await Note.save();
-            res.redirect('/notes/all-notes');
-        } catch(err) {
-            console.log(`Error in put request: ${err}`);
-            return res.status(500).send("Error in put request");
-        }
+    if (!note) {
+        return res.status(404).send("Note not found");
     }
-}
 
+    note.title = req.body.title;
+    note.content = req.body.content;
+
+    await note.save();
+    res.redirect('/notes/all-notes');
+});
 
 module.exports = router;
