@@ -15,6 +15,7 @@
             <div class="note">
                 <h3><%= note.title %> </h3>
                 <textarea><%= note.content %> </textarea>
+                <a href="/notes/edit/<%= note.id %>">edit</a>
             </div>
         <% } %>
     </div>
